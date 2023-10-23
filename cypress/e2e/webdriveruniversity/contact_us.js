@@ -3,9 +3,11 @@ describe("contact us page submission", () => {
 
     const url = "http://www.webdriveruniversity.com";
 
-    it("Submit contact us with are required data", () => {
+    it.only("Submit contact us with are required data", () => {
         cy.visit(url);
-        cy.get('#contact-us').invoke('removeAttr', 'target').click();
+        cy.get('#contact-us').invoke('removeAttr', 'target').click().then((btnName) => {
+            console.log('Text on the button: ' + btnName.text());
+        });
         cy.get('[name="first_name"]').type("Ethan");
         cy.get('[name="last_name"]').type("Hunt");
         cy.get('[name="email"]').type("ethan.hunt@example.com");

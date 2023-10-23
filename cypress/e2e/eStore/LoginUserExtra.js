@@ -3,9 +3,11 @@
 describe('Validate Different logins', () => {
     beforeEach(() => {
         cy.visit('https://lakhanadewar.github.io/stunning-octo.github.io/')
+
     });
 
-    it('validate login using valid user and password', () => {
+    it.only('validate login using valid user and password', () => {
+        cy.log("Grabbed from screen and added as global: " + this.titleLabel)
         cy.get('[data-test="username"]').type("standard_user");
         cy.get('[data-test="password"]', { force: true }).type("secret_sauce");
         cy.xpath('(//*[@id="login-button"] | //*[@data-test="login-button"])').click();
